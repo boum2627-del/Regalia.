@@ -1,299 +1,257 @@
-/* Google Fonts already linked in HTML */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>REGALIA | Ultra Luxury Automotive</title>
+    
+    <!-- External CSS -->
+    <link rel="stylesheet" href="style.css">
 
-body {
-    background-color: #000;
-    color: #fff;
-    line-height: 1.6;
-    overflow-x: hidden;
-}
+    <!-- Tailwind CSS (CDN) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Montserrat:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
 
-/* Intro overlay */
-.intro-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: #000;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 9999;
-    animation: fadeOut 2s ease 2s forwards;
-}
+    <!-- Custom Config for Tailwind -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        gold: '#d4af37',
+                        'gold-light': '#fbf5b7',
+                        'gold-dark': '#aa771c',
+                        black: '#050505',
+                        dark: '#0a0a0a'
+                    },
+                    fontFamily: {
+                        serif: ['Cinzel', 'serif'],
+                        sans: ['Montserrat', 'sans-serif'],
+                    },
+                    backgroundImage: {
+                        'gradient-gold': 'linear-gradient(to right, #bf953f, #fcf6ba, #b38728)',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="antialiased">
 
-.intro-logo {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 5rem;
-    color: #D4AF37;
-    letter-spacing: 3px;
-    opacity: 0;
-    animation: fadeInLogo 2s forwards;
-}
+    <!-- INTRO SCREEN -->
+    <div id="intro-screen">
+        <div class="text-center relative">
+            <div class="absolute inset-0 bg-yellow-500 blur-[100px] opacity-10 animate-pulse"></div>
+            <h1 class="relative z-10 text-6xl md:text-9xl font-serif font-bold text-transparent bg-clip-text bg-gradient-to-b from-[#fbf5b7] via-[#d4af37] to-[#aa771c] tracking-[0.2em] scale-90 opacity-0 transition-all duration-1000" id="intro-logo">
+                REGALIA
+            </h1>
+            <div class="h-[1px] bg-[#d4af37] mt-4 mx-auto w-0 transition-all duration-1000 delay-500" id="intro-line"></div>
+            <p class="mt-4 text-xs md:text-sm uppercase tracking-[0.5em] text-[#888] opacity-0 transition-all duration-1000 delay-1000" id="intro-sub">
+                Beyond Perfection
+            </p>
+        </div>
+    </div>
 
-@keyframes fadeInLogo {
-    to { opacity: 1; }
-}
+    <!-- NAVBAR -->
+    <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 py-6 transition-all duration-500 bg-transparent">
+        <div class="container mx-auto px-6 flex justify-between items-center">
+            <a href="#" class="text-2xl font-serif font-bold tracking-[0.2em] text-white group">
+                REGALIA
+                <span class="block h-[1px] w-0 bg-gold transition-all duration-500 group-hover:w-full"></span>
+            </a>
 
-@keyframes fadeOut {
-    to { opacity: 0; visibility: hidden; }
-}
+            <div class="hidden md:flex items-center space-x-8 font-sans">
+                <a href="#" class="text-sm uppercase tracking-widest text-gray-300 hover:text-gold transition-colors">Home</a>
+                <div class="relative group">
+                    <button class="flex items-center text-sm uppercase tracking-widest text-gray-300 hover:text-gold transition-colors">
+                        Models <i data-lucide="chevron-down" class="ml-1 w-4 h-4"></i>
+                    </button>
+                    <!-- Simple Dropdown -->
+                    <div class="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-48 bg-black/95 border border-gold/30 backdrop-blur-md py-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300">
+                        <a href="#" class="block px-6 py-3 text-xs uppercase tracking-widest text-gray-400 hover:text-gold hover:bg-white/5 text-center">BMW</a>
+                        <a href="#" class="block px-6 py-3 text-xs uppercase tracking-widest text-gray-400 hover:text-gold hover:bg-white/5 text-center">Ferrari</a>
+                        <a href="#" class="block px-6 py-3 text-xs uppercase tracking-widest text-gray-400 hover:text-gold hover:bg-white/5 text-center">Lamborghini</a>
+                    </div>
+                </div>
+                <a href="#" class="text-sm uppercase tracking-widest text-gray-300 hover:text-gold transition-colors">Rims</a>
+                <a href="#" class="text-sm uppercase tracking-widest text-gray-300 hover:text-gold transition-colors">News</a>
+                <a href="#" class="px-6 py-2 border border-gold text-gold text-xs uppercase tracking-widest hover:bg-gold hover:text-black transition-all duration-300">
+                    Contact Us
+                </a>
+            </div>
 
-/* Header */
-.header {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    background: rgba(0,0,0,0.8);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem 5%;
-    z-index: 1000;
-}
+            <button class="md:hidden text-white"><i data-lucide="menu"></i></button>
+        </div>
+    </nav>
 
-.header .logo {
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 900;
-    font-size: 1.8rem;
-    color: #D4AF37;
-}
+    <!-- HERO SECTION -->
+    <section class="relative h-screen w-full overflow-hidden">
+        <!-- Slider Images -->
+        <div id="hero-slider" class="absolute inset-0">
+            <div class="absolute inset-0 bg-cover bg-center transition-opacity duration-1000 opacity-100" style="background-image: url('https://images.unsplash.com/photo-1759066591048-ead4c2eeac6e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxibGFjayUyMGxhbWJvcmdoaW5pJTIwd2lkZWJvZHklMjBuaWdodHxlbnwxfHx8fDE3NzEyNjgxNDN8MA&ixlib=rb-4.1.0&q=80&w=1920');"></div>
+            <div class="absolute inset-0 bg-cover bg-center transition-opacity duration-1000 opacity-0" style="background-image: url('https://images.unsplash.com/photo-1686440706452-56b603b4af99?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxibGFjayUyMGZlcnJhcmklMjB3aWRlYm9keSUyMGRhcmt8ZW58MXx8fHwxNzcxMjY4MTQ0fDA&ixlib=rb-4.1.0&q=80&w=1920');"></div>
+            <div class="absolute inset-0 bg-cover bg-center transition-opacity duration-1000 opacity-0" style="background-image: url('https://images.unsplash.com/photo-1552305360-e592ec7fc092?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxibGFjayUyMGJtdyUyMG00JTIwbW9kaWZpZWQlMjBkYXJrfGVufDF8fHx8MTc3MTI2ODE0NHww&ixlib=rb-4.1.0&q=80&w=1920');"></div>
+        </div>
+        
+        <!-- Overlay -->
+        <div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent"></div>
 
-.nav ul {
-    list-style: none;
-    display: flex;
-    gap: 2rem;
-}
+        <!-- Content -->
+        <div class="absolute bottom-32 left-0 right-0 z-10 px-6 container mx-auto fade-in" id="hero-content">
+            <h2 class="text-gold text-sm md:text-lg uppercase tracking-[0.4em] mb-4">Regalia Collection</h2>
+            <h1 class="text-5xl md:text-8xl font-serif font-bold text-white mb-6 leading-tight transition-opacity duration-500" id="hero-title">Shadow of the Bull</h1>
+            <p class="text-gray-300 text-lg md:text-xl font-light tracking-wide max-w-2xl mb-10 transition-opacity duration-500" id="hero-subtitle">Lamborghini Aventador Ultimae "Ombra"</p>
+            
+            <a href="#" class="inline-flex items-center px-8 py-4 border border-gold text-gold uppercase tracking-widest hover:bg-gold hover:text-black transition-all duration-300 group">
+                Discover More
+                <i data-lucide="chevron-right" class="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+            </a>
+        </div>
 
-.nav ul li a {
-    text-decoration: none;
-    color: #fff;
-    font-weight: 600;
-    transition: 0.3s;
-}
+        <!-- Progress Bar -->
+        <div class="absolute bottom-10 left-0 right-0 flex justify-center space-x-4 z-20" id="slider-dots">
+            <button class="h-[2px] w-16 bg-gold transition-all duration-500"></button>
+            <button class="h-[2px] w-16 bg-gray-700 transition-all duration-500"></button>
+            <button class="h-[2px] w-16 bg-gray-700 transition-all duration-500"></button>
+        </div>
+    </section>
 
-.nav ul li a:hover {
-    color: #D4AF37;
-}
+    <!-- SEARCH SECTION -->
+    <section class="py-24 px-6 bg-[#050505] relative border-t border-white/5">
+        <div class="container mx-auto text-center max-w-4xl fade-in">
+            <h2 class="text-3xl md:text-4xl font-serif text-white mb-4">Find Your Dream Model</h2>
+            <p class="text-gray-400 mb-12 font-light">Choose options from below and find your customization</p>
 
-/* Hero */
-.hero {
-    height: 100vh;
-    background: url('images/hero-bg.jpg') center/cover no-repeat;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    position: relative;
-}
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 bg-[#111] p-8 border border-[#222]">
+                <div class="relative">
+                    <select class="w-full bg-black border border-[#333] text-gray-300 py-4 px-4 uppercase tracking-wider focus:border-gold focus:outline-none appearance-none">
+                        <option>Brand</option><option>BMW</option><option>Ferrari</option><option>Lamborghini</option>
+                    </select>
+                    <div class="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-gold">▼</div>
+                </div>
+                <div class="relative">
+                    <select class="w-full bg-black border border-[#333] text-gray-300 py-4 px-4 uppercase tracking-wider focus:border-gold focus:outline-none appearance-none">
+                        <option>Model</option><option>Show All</option>
+                    </select>
+                    <div class="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-gold">▼</div>
+                </div>
+                <button class="w-full bg-gold text-black font-bold uppercase tracking-widest py-4 hover:bg-yellow-600 transition-colors flex items-center justify-center gap-2">
+                    <i data-lucide="search" class="w-4 h-4"></i> Search
+                </button>
+            </div>
+        </div>
+    </section>
 
-.hero::after {
-    content: '';
-    position: absolute;
-    top:0; left:0; right:0; bottom:0;
-    background: rgba(0,0,0,0.6);
-}
+    <!-- NEWS SECTION -->
+    <section class="py-24 bg-black container mx-auto px-6">
+        <div class="flex justify-between items-end mb-12 border-b border-[#222] pb-6 fade-in">
+            <h2 class="text-4xl font-serif text-white">News & Events</h2>
+            <a href="#" class="text-gold uppercase tracking-widest text-xs hover:text-white transition-colors flex items-center gap-2">
+                View All <i data-lucide="arrow-right" class="w-3 h-3"></i>
+            </a>
+        </div>
 
-.hero-content {
-    position: relative;
-    z-index: 2;
-    animation: slideUp 2s ease forwards;
-}
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- News Item 1 -->
+            <div class="group cursor-pointer fade-in">
+                <div class="overflow-hidden mb-6 aspect-[4/3] relative">
+                    <img src="https://images.unsplash.com/photo-1759066591048-ead4c2eeac6e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxibGFjayUyMGxhbWJvcmdoaW5pJTIwd2lkZWJvZHklMjBuaWdodHxlbnwxfHx8fDE3NzEyNjgxNDN8MA&ixlib=rb-4.1.0&q=80&w=1080" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700 opacity-80 group-hover:opacity-100">
+                    <div class="absolute top-4 left-4 bg-black/80 px-3 py-1 text-gold text-xs uppercase tracking-widest">New Project</div>
+                </div>
+                <p class="text-xs text-gray-500 mb-2 uppercase tracking-widest">February 12, 2026</p>
+                <h3 class="text-xl font-serif text-white mb-3 group-hover:text-gold transition-colors">Lamborghini 'Ombra' Unveiled</h3>
+                <p class="text-gray-400 text-sm font-light line-clamp-2">Regalia’s latest masterpiece stuns the crowd with its Vanta-black finish.</p>
+            </div>
+            <!-- News Item 2 -->
+            <div class="group cursor-pointer fade-in" style="transition-delay: 100ms;">
+                <div class="overflow-hidden mb-6 aspect-[4/3] relative">
+                    <img src="https://images.unsplash.com/photo-1760510509489-5b6b2f83e7b5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxnb2xkJTIwY2FyJTIwd2hlZWwlMjByaW0lMjBsdXh1cnl8ZW58MXx8fHwxNzcxMjY4MTQ0fDA&ixlib=rb-4.1.0&q=80&w=1080" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700 opacity-80 group-hover:opacity-100">
+                </div>
+                <p class="text-xs text-gray-500 mb-2 uppercase tracking-widest">February 05, 2026</p>
+                <h3 class="text-xl font-serif text-white mb-3 group-hover:text-gold transition-colors">The Art of Forged Gold</h3>
+                <p class="text-gray-400 text-sm font-light line-clamp-2">An inside look at how we craft our signature 24k gold-plated forged rims.</p>
+            </div>
+             <!-- News Item 3 -->
+             <div class="group cursor-pointer fade-in" style="transition-delay: 200ms;">
+                <div class="overflow-hidden mb-6 aspect-[4/3] relative">
+                    <img src="https://images.unsplash.com/photo-1657779913133-45e8414370d8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxsdXh1cnklMjBjYXIlMjBpbnRlcmlvciUyMGxlYXRoZXIlMjBkaWFtb25kJTIwc3RpdGNofGVufDF8fHx8MTc3MTI2ODE0NHww&ixlib=rb-4.1.0&q=80&w=1080" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700 opacity-80 group-hover:opacity-100">
+                </div>
+                <p class="text-xs text-gray-500 mb-2 uppercase tracking-widest">January 28, 2026</p>
+                <h3 class="text-xl font-serif text-white mb-3 group-hover:text-gold transition-colors">Interior Perfection</h3>
+                <p class="text-gray-400 text-sm font-light line-clamp-2">Introducing our new diamond-stitched alcantara patterns.</p>
+            </div>
+        </div>
+    </section>
 
-.hero h1 {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 4rem;
-    color: #D4AF37;
-    margin-bottom: 1rem;
-}
+    <!-- NARRATIVE SECTION -->
+    <section class="py-32 bg-[#080808] relative overflow-hidden">
+        <div class="container mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center relative z-10">
+            <div class="fade-in">
+                <h2 class="text-gold text-5xl md:text-6xl font-serif mb-12 leading-tight">L'Excellence <br> par Passion</h2>
+                <div class="space-y-6 text-gray-300 font-light leading-loose text-lg">
+                    <p>Regalia est née d'une passion inébranlable pour l'automobile d'exception. Inspirés par les maîtres de la transformation, nous sculptons des chefs-d'œuvre automobiles.</p>
+                    <p>Widebody kits en carbone, intérieurs en cuir sur-mesure avec surpiqûres diamant, jantes forgées dorées. Chaque détail est pensé pour créer des véhicules ultra-luxueux.</p>
+                    <p>Nous ne créons pas simplement des véhicules modifiés. Nous transcendons les limites du luxe et de la performance.</p>
+                </div>
+            </div>
+            <div class="relative fade-in">
+                <div class="absolute -inset-4 border border-gold/30 pointer-events-none z-0"></div>
+                <div class="grid grid-cols-2 gap-4 relative z-10">
+                    <div class="space-y-4 pt-12">
+                        <img src="https://images.unsplash.com/photo-1759066591048-ead4c2eeac6e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxibGFjayUyMGxhbWJvcmdoaW5pJTIwd2lkZWJvZHklMjBuaWdodHxlbnwxfHx8fDE3NzEyNjgxNDN8MA&ixlib=rb-4.1.0&q=80&w=1080" class="w-full grayscale hover:grayscale-0 transition-all duration-700 border border-[#222]">
+                        <img src="https://images.unsplash.com/photo-1552305360-e592ec7fc092?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxibGFjayUyMGJtdyUyMG00JTIwbW9kaWZpZWQlMjBkYXJrfGVufDF8fHx8MTc3MTI2ODE0NHww&ixlib=rb-4.1.0&q=80&w=1080" class="w-full grayscale hover:grayscale-0 transition-all duration-700 border border-[#222]">
+                    </div>
+                    <div class="space-y-4">
+                        <img src="https://images.unsplash.com/photo-1686440706452-56b603b4af99?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxibGFjayUyMGZlcnJhcmklMjB3aWRlYm9keSUyMGRhcmt8ZW58MXx8fHwxNzcxMjY4MTQ0fDA&ixlib=rb-4.1.0&q=80&w=1080" class="w-full grayscale hover:grayscale-0 transition-all duration-700 border border-[#222]">
+                        <img src="https://images.unsplash.com/photo-1657779913133-45e8414370d8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxsdXh1cnklMjBjYXIlMjBpbnRlcmlvciUyMGxlYXRoZXIlMjBkaWFtb25kJTIwc3RpdGNofGVufDF8fHx8MTc3MTI2ODE0NHww&ixlib=rb-4.1.0&q=80&w=1080" class="w-full grayscale hover:grayscale-0 transition-all duration-700 border border-[#222]">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-.hero p {
-    font-size: 1.5rem;
-    margin-bottom: 2rem;
-}
+    <!-- FOOTER -->
+    <footer class="bg-[#050505] text-white py-16 border-t border-[#111]">
+        <div class="container mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-12">
+            <div>
+                <a href="#" class="text-2xl font-serif font-bold tracking-[0.2em] text-white">REGALIA</a>
+                <p class="text-gray-500 text-sm mt-4 leading-relaxed">Redefining automotive luxury through bespoke transformations.</p>
+            </div>
+            <div>
+                <h4 class="text-gold text-xs uppercase tracking-widest mb-6">Explore</h4>
+                <ul class="space-y-4 text-sm text-gray-400">
+                    <li><a href="#" class="hover:text-white transition-colors">Models</a></li>
+                    <li><a href="#" class="hover:text-white transition-colors">Rims</a></li>
+                    <li><a href="#" class="hover:text-white transition-colors">News</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-gold text-xs uppercase tracking-widest mb-6">Contact</h4>
+                <p class="text-sm text-gray-400">12 Avenue Montaigne, Paris</p>
+                <p class="text-sm text-gray-400">+33 1 23 45 67 89</p>
+                <p class="text-sm text-gray-400">concierge@regalia.com</p>
+            </div>
+            <div>
+                <h4 class="text-gold text-xs uppercase tracking-widest mb-6">Newsletter</h4>
+                <div class="flex border-b border-[#333] py-2">
+                    <input type="email" placeholder="Your email" class="bg-transparent focus:outline-none w-full text-sm">
+                    <button class="text-gold uppercase text-xs hover:text-white transition-colors">Join</button>
+                </div>
+            </div>
+        </div>
+        <div class="container mx-auto px-6 mt-16 pt-8 border-t border-[#111] text-center text-xs text-gray-600 uppercase tracking-widest">
+            © 2026 Regalia Luxury Automotive. All Rights Reserved.
+        </div>
+    </footer>
 
-.btn-gold {
-    background: #D4AF37;
-    color: #000;
-    padding: 0.8rem 2rem;
-    text-transform: uppercase;
-    font-weight: 700;
-    border: none;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-.btn-gold:hover {
-    background: #fff;
-}
-
-/* Animations */
-@keyframes slideUp {
-    from { opacity:0; transform: translateY(50px);}
-    to { opacity:1; transform: translateY(0);}
-}
-
-/* Sections general */
-section {
-    padding: 6rem 5%;
-}
-
-section h2 {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 3rem;
-    text-align: center;
-    margin-bottom: 3rem;
-    color: #D4AF37;
-}
-
-section p {
-    max-width: 900px;
-    margin: 0 auto 2rem auto;
-    font-size: 1.2rem;
-    text-align: center;
-}
-
-/* Brands */
-.brand-grid {
-    display: flex;
-    justify-content: center;
-    gap: 3rem;
-    flex-wrap: wrap;
-}
-
-.brand-card {
-    background: #111;
-    padding: 3rem 2rem;
-    font-size: 2rem;
-    text-align: center;
-    border: 2px solid #D4AF37;
-    transition: transform 0.3s, box-shadow 0.3s;
-    cursor: pointer;
-}
-
-.brand-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 10px 20px rgba(212,175,55,0.5);
-}
-
-/* Models */
-.models .model-card {
-    margin-bottom: 4rem;
-}
-
-.model-gallery {
-    display: flex;
-    justify-content: center;
-    gap: 1rem;
-    flex-wrap: wrap;
-}
-
-.model-gallery img {
-    width: 300px;
-    border: 2px solid #D4AF37;
-    transition: transform 0.3s;
-}
-
-.model-gallery img:hover {
-    transform: scale(1.05);
-}
-
-/* Rims */
-.rims-gallery {
-    display: flex;
-    justify-content: center;
-    gap: 2rem;
-    flex-wrap: wrap;
-}
-
-.rims-gallery img {
-    width: 250px;
-    border: 2px solid #D4AF37;
-    transition: transform 0.3s;
-}
-
-.rims-gallery img:hover {
-    transform: rotate(5deg) scale(1.1);
-}
-
-/* Find Model */
-.find-model .filters {
-    display: flex;
-    justify-content: center;
-    gap: 1rem;
-    flex-wrap: wrap;
-    margin-bottom: 2rem;
-}
-
-.find-model select, .find-model button {
-    padding: 0.7rem 1rem;
-    font-size: 1rem;
-    border: 2px solid #D4AF37;
-    background: #000;
-    color: #fff;
-}
-
-.find-model select:hover {
-    border-color: #fff;
-}
-
-/* News */
-.news-grid {
-    display: flex;
-    gap: 2rem;
-    flex-wrap: wrap;
-    justify-content: center;
-}
-
-.news-card {
-    background: #111;
-    padding: 2rem;
-    border: 2px solid #D4AF37;
-    width: 300px;
-    transition: transform 0.3s;
-}
-
-.news-card:hover {
-    transform: translateY(-10px);
-}
-
-/* About */
-.about p {
-    max-width: 900px;
-    margin: 0 auto;
-    line-height: 1.8;
-}
-
-/* Contact */
-.contact form {
-    max-width: 600px;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-}
-
-.contact input, .contact textarea {
-    padding: 0.8rem;
-    border: 2px solid #D4AF37;
-    background: #111;
-    color: #fff;
-}
-
-.contact button {
-    align-self: flex-start;
-}
-
-/* Footer */
-.footer {
-    background: #111;
-    text-align: center;
-    padding: 2rem 0;
-    border-top: 2px solid #D4AF37;
-}
+    <!-- Logic Script -->
+    <script src="script.js"></script>
+</body>
+</html>
