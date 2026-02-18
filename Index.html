@@ -1,176 +1,299 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <!-- META SEO -->
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Regalia - Transformation automobile ultra-luxe spécialisée BMW, Ferrari et Lamborghini. Widebody kits carbone, jantes forgées dorées, intérieurs sur-mesure.">
-    <meta name="keywords" content="Regalia, BMW tuning, Ferrari transformation, Lamborghini custom, widebody kit, luxury cars, Mansory style">
-    <meta name="author" content="Regalia">
-    <title>Regalia | Ultra Luxury Automotive Transformation</title>
+/* Google Fonts already linked in HTML */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
 
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+body {
+    background-color: #000;
+    color: #fff;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
 
-    <!-- CSS -->
-    <link rel="stylesheet" href="style.css">
-</head>
+/* Intro overlay */
+.intro-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    animation: fadeOut 2s ease 2s forwards;
+}
 
-<body>
+.intro-logo {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 5rem;
+    color: #D4AF37;
+    letter-spacing: 3px;
+    opacity: 0;
+    animation: fadeInLogo 2s forwards;
+}
 
-<!-- INTRO ANIMATION -->
-<div class="intro-overlay">
-    <h1 class="intro-logo">REGALIA</h1>
-</div>
+@keyframes fadeInLogo {
+    to { opacity: 1; }
+}
 
-<!-- HEADER -->
-<header class="header">
-    <div class="logo">REGALIA</div>
-    <nav class="nav">
-        <ul>
-            <li><a href="#home">Home</a></li>
-            <li><a href="#brands">Brands</a></li>
-            <li><a href="#models">Models</a></li>
-            <li><a href="#rims">Mansory Rims</a></li>
-            <li><a href="#news">News</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-    </nav>
-</header>
+@keyframes fadeOut {
+    to { opacity: 0; visibility: hidden; }
+}
 
-<!-- HERO SECTION -->
-<section id="home" class="hero">
-    <div class="hero-content">
-        <h1>Luxury. Power. Transformation.</h1>
-        <p>BMW · Ferrari · Lamborghini – Après transformation par Regalia</p>
-        <a href="#find" class="btn-gold">Discover Now</a>
-    </div>
-</section>
+/* Header */
+.header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: rgba(0,0,0,0.8);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 5%;
+    z-index: 1000;
+}
 
-<!-- BRANDS SECTION -->
-<section id="brands" class="brands">
-    <h2>Our Brands</h2>
-    <div class="brand-grid">
-        <div class="brand-card">BMW</div>
-        <div class="brand-card">Ferrari</div>
-        <div class="brand-card">Lamborghini</div>
-    </div>
-</section>
+.header .logo {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: 1.8rem;
+    color: #D4AF37;
+}
 
-<!-- MODELS SECTION -->
-<section id="models" class="models">
-    <h2>Transformed Models</h2>
+.nav ul {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+}
 
-    <div class="model-card">
-        <h3>BMW M5 Regalia Edition</h3>
-        <div class="model-gallery">
-            <img src="images/bmw-side.jpg" alt="BMW côté après transformation">
-            <img src="images/bmw-front.jpg" alt="BMW avant après transformation">
-            <img src="images/bmw-rear.jpg" alt="BMW arrière après transformation">
-        </div>
-    </div>
+.nav ul li a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: 600;
+    transition: 0.3s;
+}
 
-    <div class="model-card">
-        <h3>Ferrari Purosangue Regalia</h3>
-        <div class="model-gallery">
-            <img src="images/ferrari-side.jpg" alt="Ferrari côté après transformation">
-            <img src="images/ferrari-front.jpg" alt="Ferrari avant après transformation">
-            <img src="images/ferrari-rear.jpg" alt="Ferrari arrière après transformation">
-        </div>
-    </div>
+.nav ul li a:hover {
+    color: #D4AF37;
+}
 
-    <div class="model-card">
-        <h3>Lamborghini Urus Regalia</h3>
-        <div class="model-gallery">
-            <img src="images/lamborghini-side.jpg" alt="Lamborghini côté après transformation">
-            <img src="images/lamborghini-front.jpg" alt="Lamborghini avant après transformation">
-            <img src="images/lamborghini-rear.jpg" alt="Lamborghini arrière après transformation">
-        </div>
-    </div>
+/* Hero */
+.hero {
+    height: 100vh;
+    background: url('images/hero-bg.jpg') center/cover no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+}
 
-</section>
+.hero::after {
+    content: '';
+    position: absolute;
+    top:0; left:0; right:0; bottom:0;
+    background: rgba(0,0,0,0.6);
+}
 
-<!-- MANSORY RIMS -->
-<section id="rims" class="rims">
-    <h2>Mansory Rims</h2>
-    <div class="rims-gallery">
-        <img src="images/rim1.jpg" alt="Jante dorée forgée">
-        <img src="images/rim2.jpg" alt="Jante carbone luxe">
-        <img src="images/rim3.jpg" alt="Jante sport premium">
-    </div>
-</section>
+.hero-content {
+    position: relative;
+    z-index: 2;
+    animation: slideUp 2s ease forwards;
+}
 
-<!-- FIND YOUR DREAM MODEL -->
-<section id="find" class="find-model">
-    <h2>Find Your Dream Model</h2>
-    <p>Choose options from below and find your customization</p>
+.hero h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 4rem;
+    color: #D4AF37;
+    margin-bottom: 1rem;
+}
 
-    <div class="filters">
-        <select id="brandSelect">
-            <option value="">Select Brand</option>
-            <option value="BMW">BMW</option>
-            <option value="Ferrari">Ferrari</option>
-            <option value="Lamborghini">Lamborghini</option>
-        </select>
+.hero p {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+}
 
-        <select id="modelSelect">
-            <option value="">Select Model</option>
-        </select>
+.btn-gold {
+    background: #D4AF37;
+    color: #000;
+    padding: 0.8rem 2rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s;
+}
 
-        <button class="btn-gold" onclick="searchModel()">Search</button>
-    </div>
+.btn-gold:hover {
+    background: #fff;
+}
 
-    <div id="searchResult"></div>
-</section>
+/* Animations */
+@keyframes slideUp {
+    from { opacity:0; transform: translateY(50px);}
+    to { opacity:1; transform: translateY(0);}
+}
 
-<!-- NEWS & EVENTS -->
-<section id="news" class="news">
-    <h2>News & Events</h2>
-    <div class="news-grid">
-        <div class="news-card">
-            <h3>New BMW Transformation</h3>
-            <p>Widebody carbon kit & golden forged rims - January Edition.</p>
-        </div>
-        <div class="news-card">
-            <h3>Ferrari Custom Interior</h3>
-            <p>Diamond stitching leather & LED ambient upgrade.</p>
-        </div>
-        <div class="news-card">
-            <h3>Lamborghini Sport Package</h3>
-            <p>Full performance suspension & custom exhaust system.</p>
-        </div>
-    </div>
-</section>
+/* Sections general */
+section {
+    padding: 6rem 5%;
+}
 
-<!-- ABOUT SECTION -->
-<section id="about" class="about">
-    <h2>L’Excellence par Passion</h2>
-    <p>
-        Regalia est née d'une passion inébranlable pour l'automobile d'exception. Inspirés par les maîtres de la transformation comme Mansory et Brabus, nous nous spécialisons exclusivement dans la transformation de BMW, Ferrari et Lamborghini.
-        Notre philosophie repose sur l'excellence totale : widebody kits en carbone, intérieurs en cuir sur-mesure avec surpiqûres diamant, jantes forgées dorées, suspensions sport et éclairages LED personnalisés.
-        Nous sculptons des chefs-d'œuvre automobiles qui transcendent les limites du luxe et de la performance.
-    </p>
-</section>
+section h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 3rem;
+    text-align: center;
+    margin-bottom: 3rem;
+    color: #D4AF37;
+}
 
-<!-- CONTACT -->
-<section id="contact" class="contact">
-    <h2>Contact Us</h2>
-    <form>
-        <input type="text" placeholder="Full Name" required>
-        <input type="email" placeholder="Email Address" required>
-        <textarea placeholder="Your Message"></textarea>
-        <button type="submit" class="btn-gold">Send Message</button>
-    </form>
-</section>
+section p {
+    max-width: 900px;
+    margin: 0 auto 2rem auto;
+    font-size: 1.2rem;
+    text-align: center;
+}
 
-<!-- FOOTER -->
-<footer class="footer">
-    <p>© 2026 Regalia. All Rights Reserved.</p>
-</footer>
+/* Brands */
+.brand-grid {
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    flex-wrap: wrap;
+}
 
-<!-- JS -->
-<script src="script.js"></script>
+.brand-card {
+    background: #111;
+    padding: 3rem 2rem;
+    font-size: 2rem;
+    text-align: center;
+    border: 2px solid #D4AF37;
+    transition: transform 0.3s, box-shadow 0.3s;
+    cursor: pointer;
+}
 
-</body>
-</html>
+.brand-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(212,175,55,0.5);
+}
+
+/* Models */
+.models .model-card {
+    margin-bottom: 4rem;
+}
+
+.model-gallery {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.model-gallery img {
+    width: 300px;
+    border: 2px solid #D4AF37;
+    transition: transform 0.3s;
+}
+
+.model-gallery img:hover {
+    transform: scale(1.05);
+}
+
+/* Rims */
+.rims-gallery {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+.rims-gallery img {
+    width: 250px;
+    border: 2px solid #D4AF37;
+    transition: transform 0.3s;
+}
+
+.rims-gallery img:hover {
+    transform: rotate(5deg) scale(1.1);
+}
+
+/* Find Model */
+.find-model .filters {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-bottom: 2rem;
+}
+
+.find-model select, .find-model button {
+    padding: 0.7rem 1rem;
+    font-size: 1rem;
+    border: 2px solid #D4AF37;
+    background: #000;
+    color: #fff;
+}
+
+.find-model select:hover {
+    border-color: #fff;
+}
+
+/* News */
+.news-grid {
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.news-card {
+    background: #111;
+    padding: 2rem;
+    border: 2px solid #D4AF37;
+    width: 300px;
+    transition: transform 0.3s;
+}
+
+.news-card:hover {
+    transform: translateY(-10px);
+}
+
+/* About */
+.about p {
+    max-width: 900px;
+    margin: 0 auto;
+    line-height: 1.8;
+}
+
+/* Contact */
+.contact form {
+    max-width: 600px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.contact input, .contact textarea {
+    padding: 0.8rem;
+    border: 2px solid #D4AF37;
+    background: #111;
+    color: #fff;
+}
+
+.contact button {
+    align-self: flex-start;
+}
+
+/* Footer */
+.footer {
+    background: #111;
+    text-align: center;
+    padding: 2rem 0;
+    border-top: 2px solid #D4AF37;
+}
