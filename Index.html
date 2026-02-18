@@ -19,7 +19,7 @@
     <!-- Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
 
-    <!-- Custom Config for Tailwind -->
+    <!-- Custom Tailwind Config -->
     <script>
         tailwind.config = {
             theme: {
@@ -73,7 +73,6 @@
                     <button class="flex items-center text-sm uppercase tracking-widest text-gray-300 hover:text-gold transition-colors">
                         Models <i data-lucide="chevron-down" class="ml-1 w-4 h-4"></i>
                     </button>
-                    <!-- Simple Dropdown -->
                     <div class="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-48 bg-black/95 border border-gold/30 backdrop-blur-md py-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300">
                         <a href="#" class="block px-6 py-3 text-xs uppercase tracking-widest text-gray-400 hover:text-gold hover:bg-white/5 text-center">BMW</a>
                         <a href="#" class="block px-6 py-3 text-xs uppercase tracking-widest text-gray-400 hover:text-gold hover:bg-white/5 text-center">Ferrari</a>
@@ -93,17 +92,14 @@
 
     <!-- HERO SECTION -->
     <section class="relative h-screen w-full overflow-hidden">
-        <!-- Slider Images -->
         <div id="hero-slider" class="absolute inset-0">
             <div class="absolute inset-0 bg-cover bg-center transition-opacity duration-1000 opacity-100" style="background-image: url('https://images.unsplash.com/photo-1759066591048-ead4c2eeac6e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxibGFjayUyMGxhbWJvcmdoaW5pJTIwd2lkZWJvZHklMjBuaWdodHxlbnwxfHx8fDE3NzEyNjgxNDN8MA&ixlib=rb-4.1.0&q=80&w=1920');"></div>
             <div class="absolute inset-0 bg-cover bg-center transition-opacity duration-1000 opacity-0" style="background-image: url('https://images.unsplash.com/photo-1686440706452-56b603b4af99?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxibGFjayUyMGZlcnJhcmklMjB3aWRlYm9keSUyMGRhcmt8ZW58MXx8fHwxNzcxMjY4MTQ0fDA&ixlib=rb-4.1.0&q=80&w=1920');"></div>
             <div class="absolute inset-0 bg-cover bg-center transition-opacity duration-1000 opacity-0" style="background-image: url('https://images.unsplash.com/photo-1552305360-e592ec7fc092?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxibGFjayUyMGJtdyUyMG00JTIwbW9kaWZpZWQlMjBkYXJrfGVufDF8fHx8MTc3MTI2ODE0NHww&ixlib=rb-4.1.0&q=80&w=1920');"></div>
         </div>
         
-        <!-- Overlay -->
         <div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent"></div>
 
-        <!-- Content -->
         <div class="absolute bottom-32 left-0 right-0 z-10 px-6 container mx-auto fade-in" id="hero-content">
             <h2 class="text-gold text-sm md:text-lg uppercase tracking-[0.4em] mb-4">Regalia Collection</h2>
             <h1 class="text-5xl md:text-8xl font-serif font-bold text-white mb-6 leading-tight transition-opacity duration-500" id="hero-title">Shadow of the Bull</h1>
@@ -115,7 +111,6 @@
             </a>
         </div>
 
-        <!-- Progress Bar -->
         <div class="absolute bottom-10 left-0 right-0 flex justify-center space-x-4 z-20" id="slider-dots">
             <button class="h-[2px] w-16 bg-gold transition-all duration-500"></button>
             <button class="h-[2px] w-16 bg-gray-700 transition-all duration-500"></button>
@@ -159,7 +154,7 @@
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <!-- News Item 1 -->
+            <!-- News Items -->
             <div class="group cursor-pointer fade-in">
                 <div class="overflow-hidden mb-6 aspect-[4/3] relative">
                     <img src="https://images.unsplash.com/photo-1759066591048-ead4c2eeac6e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxibGFjayUyMGxhbWJvcmdoaW5pJTIwd2lkZWJvZHklMjBuaWdodHxlbnwxfHx8fDE3NzEyNjgxNDN8MA&ixlib=rb-4.1.0&q=80&w=1080" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700 opacity-80 group-hover:opacity-100">
@@ -205,53 +200,4 @@
                 <div class="absolute -inset-4 border border-gold/30 pointer-events-none z-0"></div>
                 <div class="grid grid-cols-2 gap-4 relative z-10">
                     <div class="space-y-4 pt-12">
-                        <img src="https://images.unsplash.com/photo-1759066591048-ead4c2eeac6e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxibGFjayUyMGxhbWJvcmdoaW5pJTIwd2lkZWJvZHklMjBuaWdodHxlbnwxfHx8fDE3NzEyNjgxNDN8MA&ixlib=rb-4.1.0&q=80&w=1080" class="w-full grayscale hover:grayscale-0 transition-all duration-700 border border-[#222]">
-                        <img src="https://images.unsplash.com/photo-1552305360-e592ec7fc092?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxibGFjayUyMGJtdyUyMG00JTIwbW9kaWZpZWQlMjBkYXJrfGVufDF8fHx8MTc3MTI2ODE0NHww&ixlib=rb-4.1.0&q=80&w=1080" class="w-full grayscale hover:grayscale-0 transition-all duration-700 border border-[#222]">
-                    </div>
-                    <div class="space-y-4">
-                        <img src="https://images.unsplash.com/photo-1686440706452-56b603b4af99?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxibGFjayUyMGZlcnJhcmklMjB3aWRlYm9keSUyMGRhcmt8ZW58MXx8fHwxNzcxMjY4MTQ0fDA&ixlib=rb-4.1.0&q=80&w=1080" class="w-full grayscale hover:grayscale-0 transition-all duration-700 border border-[#222]">
-                        <img src="https://images.unsplash.com/photo-1657779913133-45e8414370d8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxsdXh1cnklMjBjYXIlMjBpbnRlcmlvciUyMGxlYXRoZXIlMjBkaWFtb25kJTIwc3RpdGNofGVufDF8fHx8MTc3MTI2ODE0NHww&ixlib=rb-4.1.0&q=80&w=1080" class="w-full grayscale hover:grayscale-0 transition-all duration-700 border border-[#222]">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- FOOTER -->
-    <footer class="bg-[#050505] text-white py-16 border-t border-[#111]">
-        <div class="container mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-12">
-            <div>
-                <a href="#" class="text-2xl font-serif font-bold tracking-[0.2em] text-white">REGALIA</a>
-                <p class="text-gray-500 text-sm mt-4 leading-relaxed">Redefining automotive luxury through bespoke transformations.</p>
-            </div>
-            <div>
-                <h4 class="text-gold text-xs uppercase tracking-widest mb-6">Explore</h4>
-                <ul class="space-y-4 text-sm text-gray-400">
-                    <li><a href="#" class="hover:text-white transition-colors">Models</a></li>
-                    <li><a href="#" class="hover:text-white transition-colors">Rims</a></li>
-                    <li><a href="#" class="hover:text-white transition-colors">News</a></li>
-                </ul>
-            </div>
-            <div>
-                <h4 class="text-gold text-xs uppercase tracking-widest mb-6">Contact</h4>
-                <p class="text-sm text-gray-400">12 Avenue Montaigne, Paris</p>
-                <p class="text-sm text-gray-400">+33 1 23 45 67 89</p>
-                <p class="text-sm text-gray-400">concierge@regalia.com</p>
-            </div>
-            <div>
-                <h4 class="text-gold text-xs uppercase tracking-widest mb-6">Newsletter</h4>
-                <div class="flex border-b border-[#333] py-2">
-                    <input type="email" placeholder="Your email" class="bg-transparent focus:outline-none w-full text-sm">
-                    <button class="text-gold uppercase text-xs hover:text-white transition-colors">Join</button>
-                </div>
-            </div>
-        </div>
-        <div class="container mx-auto px-6 mt-16 pt-8 border-t border-[#111] text-center text-xs text-gray-600 uppercase tracking-widest">
-            © 2026 Regalia Luxury Automotive. All Rights Reserved.
-        </div>
-    </footer>
-
-    <!-- Logic Script -->
-    <script src="script.js"></script>
-</body>
-</html>
+                        <img src="https
