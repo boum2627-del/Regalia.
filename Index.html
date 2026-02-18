@@ -1,934 +1,176 @@
 <!DOCTYPE html>
-<html lang="fr" class="scroll-smooth">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Regalia - Transformation de véhicules de luxe. BMW, Ferrari, Lamborghini. Excellence et passion pour des créations automobiles uniques. Widebody kits, jantes forgées, intérieurs sur mesure." />
-    <meta name="keywords" content="Regalia, Luxury Cars, Tuning, Customization, BMW, Ferrari, Lamborghini, Mansory, Brabus, Widebody, Carbon Fiber, Gold Rims" />
-    <meta name="author" content="Regalia Automotive" />
-    <meta property="og:title" content="Regalia - L'Excellence par Passion" />
-    <meta property="og:description" content="Découvrez nos transformations exclusives sur BMW, Ferrari et Lamborghini." />
-    <meta property="og:image" content="https://i.postimg.cc/dVRR1mRh/image.png" />
-    <title>Regalia - Ultra Luxury Automotive Transformation</title>
-    
-    <!-- External Resources -->
+<html lang="fr">
+<head>
+    <!-- META SEO -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Regalia - Transformation automobile ultra-luxe spécialisée BMW, Ferrari et Lamborghini. Widebody kits carbone, jantes forgées dorées, intérieurs sur-mesure.">
+    <meta name="keywords" content="Regalia, BMW tuning, Ferrari transformation, Lamborghini custom, widebody kit, luxury cars, Mansory style">
+    <meta name="author" content="Regalia">
+    <title>Regalia | Ultra Luxury Automotive Transformation</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <!-- CSS -->
     <link rel="stylesheet" href="style.css">
-    
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800&family=Montserrat:wght@200;300;400;500;600&display=swap" rel="stylesheet">
-    
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            fontFamily: {
-              sans: ['Montserrat', 'sans-serif'],
-              serif: ['Cinzel', 'serif'],
-            },
-            colors: {
-              gold: {
-                400: '#fbbf24',
-                500: '#f59e0b',
-                600: '#d97706',
-              }
-            },
-            backgroundImage: {
-              'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-            }
-          }
-        }
-      }
-    </script>
-    
-    <!-- Import Map -->
-    <script type="importmap">
-      {
-        "imports": {
-          "react": "https://esm.sh/react@18.2.0",
-          "react-dom/client": "https://esm.sh/react-dom@18.2.0/client",
-          "framer-motion": "https://esm.sh/framer-motion@10.16.4",
-          "lucide-react": "https://esm.sh/lucide-react@0.292.0"
-        }
-      }
-    </script>
-    
-    <style>
-      body {
-        background-color: #050505;
-        color: white;
-        overflow-x: hidden;
-      }
-      /* Custom Scrollbar */
-      ::-webkit-scrollbar {
-        width: 8px;
-      }
-      ::-webkit-scrollbar-track {
-        background: #000;
-      }
-      ::-webkit-scrollbar-thumb {
-        background: #333;
-        border-radius: 4px;
-      }
-      ::-webkit-scrollbar-thumb:hover {
-        background: #fbbf24;
-      }
-      .no-scrollbar::-webkit-scrollbar {
-          display: none;
-      }
-      .no-scrollbar {
-          -ms-overflow-style: none;
-          scrollbar-width: none;
-      }
-    </style>
-  </head>
-  <body>
-    <div id="root"></div>
+</head>
 
-    <!-- Application Script -->
-    <script type="module">
-      import React, { useState, useEffect } from "react";
-      import { createRoot } from "react-dom/client";
-      import { motion, AnimatePresence } from "framer-motion";
-      import { Menu, X, Search, ChevronRight, ZoomIn, ArrowRight, Mail, MapPin, Phone, Instagram, Facebook, Youtube } from "lucide-react";
+<body>
 
-      // --- Data ---
-      const carDatabase = [
-        {
-          id: 1,
-          brand: "Lamborghini",
-          model: "Regalia Prism Aurora",
-          images: {
-            side: "https://i.postimg.cc/VvtTNfqv/image.png",
-            front: "https://i.postimg.cc/BnThy7pD/image.png",
-            back: "https://i.postimg.cc/TwwCKd65/image.png"
-          },
-          specs: "V12 | 770 HP | 0-100 2.8s"
-        },
-        {
-          id: 2,
-          brand: "BMW",
-          model: "Regalia Shadow Strike",
-          images: {
-            side: "https://i.postimg.cc/GtW3Tfwb/image.png",
-            front: "https://i.postimg.cc/B6tJY3Jg/image.png",
-            back: "https://i.postimg.cc/3rsDvSZP/image.png"
-          },
-          specs: "L6 Twin Turbo | 510 HP | Widebody Kit"
-        },
-        {
-          id: 3,
-          brand: "Ferrari",
-          model: "Regalia Giallo Monarch",
-          images: {
-            side: "https://i.postimg.cc/KjQTBLDx/image.png",
-            front: "https://i.postimg.cc/BnF6GHLd/image.png",
-            back: "https://i.postimg.cc/QdKBxvwV/image.png"
-          },
-          specs: "V8 Turbo | 720 HP | Carbon Edition"
-        },
-        {
-          id: 4,
-          brand: "Lamborghini",
-          model: "Regalia Onyx Gold",
-          images: {
-            side: "https://i.postimg.cc/26B4ZVVv/image.png",
-            front: "https://i.postimg.cc/X7KkLGQW/image.png",
-            back: "https://i.postimg.cc/W3MdVrdW/image.png"
-          },
-          specs: "V8 Twin Turbo | 820 HP | Widebody SUV"
-        },
-        {
-          id: 5,
-          brand: "Ferrari",
-          model: "Regalia Crimson Overlord",
-          images: {
-            side: "https://i.postimg.cc/MZRqHqKL/image.png",
-            front: "https://i.postimg.cc/SxxB6hky/image.png",
-            back: "https://i.postimg.cc/Y0xPFXPw/image.png"
-          },
-          specs: "Hybrid V8 | 1000 HP | Gold Edition"
-        }
-      ];
+<!-- INTRO ANIMATION -->
+<div class="intro-overlay">
+    <h1 class="intro-logo">REGALIA</h1>
+</div>
 
-      const rims = [
-        { id: 1, name: "FC.15", img: "https://i.postimg.cc/rFvQkqXX/image.png" },
-        { id: 2, name: "FO.6", img: "https://i.postimg.cc/BvdK8np3/image.png" },
-        { id: 3, name: "FY.5", img: "https://i.postimg.cc/nVm69SFZ/Whats-App-Image-2026-02-17-at-12-44-40.jpg" },
-        { id: 4, name: "CS.11", img: "https://i.postimg.cc/j28NSQFx/image.png" },
-      ];
+<!-- HEADER -->
+<header class="header">
+    <div class="logo">REGALIA</div>
+    <nav class="nav">
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#brands">Brands</a></li>
+            <li><a href="#models">Models</a></li>
+            <li><a href="#rims">Mansory Rims</a></li>
+            <li><a href="#news">News</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+</header>
 
-      const news = [
-        {
-          id: 1,
-          title: "Transformation du Mois: Regalia Monarch",
-          date: "Décembre 2025",
-          img: "https://i.postimg.cc/C15JH5pY/Whats-App-Image-2026-02-17-at-13-09-39.jpg",
-          excerpt: "Une silhouette imposante et racée : découvrez le SUV exclusif signé Regalia, habillé d’un rouge profond captivant et sublimé par des finitions sur mesure."
-        },
-        {
-          id: 2,
-          title: "Nouveau Kit Large pour Regalia Zenthra",
-          date: "Janvier 2026",
-          img: "https://i.postimg.cc/Wz3d8sgL/image.png",
-          excerpt: "Une présence saisissante : Découvrez le SUV exclusif signé Regalia, sublimé par un dégradé noir et turquoise et des finitions sur mesure."
-        }
-      ];
+<!-- HERO SECTION -->
+<section id="home" class="hero">
+    <div class="hero-content">
+        <h1>Luxury. Power. Transformation.</h1>
+        <p>BMW · Ferrari · Lamborghini – Après transformation par Regalia</p>
+        <a href="#find" class="btn-gold">Discover Now</a>
+    </div>
+</section>
 
-      // --- Components ---
+<!-- BRANDS SECTION -->
+<section id="brands" class="brands">
+    <h2>Our Brands</h2>
+    <div class="brand-grid">
+        <div class="brand-card">BMW</div>
+        <div class="brand-card">Ferrari</div>
+        <div class="brand-card">Lamborghini</div>
+    </div>
+</section>
 
-      // 1. Navbar
-      function Navbar({ scrollToSection }) {
-        const [isScrolled, setIsScrolled] = useState(false);
-        const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+<!-- MODELS SECTION -->
+<section id="models" class="models">
+    <h2>Transformed Models</h2>
 
-        useEffect(() => {
-          const handleScroll = () => setIsScrolled(window.scrollY > 50);
-          window.addEventListener("scroll", handleScroll);
-          return () => window.removeEventListener("scroll", handleScroll);
-        }, []);
+    <div class="model-card">
+        <h3>BMW M5 Regalia Edition</h3>
+        <div class="model-gallery">
+            <img src="images/bmw-side.jpg" alt="BMW côté après transformation">
+            <img src="images/bmw-front.jpg" alt="BMW avant après transformation">
+            <img src="images/bmw-rear.jpg" alt="BMW arrière après transformation">
+        </div>
+    </div>
 
-        const navLinks = [
-          { name: "Home", id: "hero" },
-          { name: "Brands", id: "brands" },
-          { name: "Models", id: "models" },
-          { name: "Rims", id: "rims" },
-          { name: "News", id: "news" },
-          { name: "About", id: "about" },
-          { name: "Contact", id: "contact" },
-        ];
+    <div class="model-card">
+        <h3>Ferrari Purosangue Regalia</h3>
+        <div class="model-gallery">
+            <img src="images/ferrari-side.jpg" alt="Ferrari côté après transformation">
+            <img src="images/ferrari-front.jpg" alt="Ferrari avant après transformation">
+            <img src="images/ferrari-rear.jpg" alt="Ferrari arrière après transformation">
+        </div>
+    </div>
 
-        return React.createElement(
-          "nav",
-          {
-            className: `fixed top-0 left-0 w-full z-50 transition-all duration-500 ${
-              isScrolled ? "bg-black/90 backdrop-blur-md py-4 shadow-2xl border-b border-amber-500/20" : "bg-gradient-to-b from-black/80 to-transparent py-8"
-            }`
-          },
-          React.createElement(
-            "div",
-            { className: "container mx-auto px-6 flex justify-between items-center" },
-            React.createElement(
-              "div",
-              {
-                className: "text-2xl font-serif font-bold tracking-widest text-white cursor-pointer relative group",
-                onClick: () => scrollToSection("hero")
-              },
-              React.createElement("span", { className: "text-amber-400" }, "R"), "EGALIA",
-              React.createElement("div", { className: "absolute -bottom-2 left-0 w-0 h-0.5 bg-amber-400 transition-all duration-300 group-hover:w-full opacity-0 group-hover:opacity-100 shadow-[0_0_10px_rgba(251,191,36,0.8)]" })
-            ),
-            React.createElement(
-              "div",
-              { className: "hidden md:flex space-x-8 items-center" },
-              navLinks.map((link) => 
-                React.createElement(
-                  "button",
-                  {
-                    key: link.id,
-                    onClick: () => scrollToSection(link.id),
-                    className: "uppercase text-[10px] tracking-[0.25em] font-medium text-gray-300 hover:text-amber-400 transition-colors relative group py-2"
-                  },
-                  link.name,
-                  React.createElement("span", { className: "absolute bottom-0 left-0 w-0 h-px bg-amber-400 transition-all duration-300 group-hover:w-full" })
-                )
-              )
-            ),
-            React.createElement(
-              "button",
-              {
-                className: "md:hidden text-white hover:text-amber-400",
-                onClick: () => setMobileMenuOpen(!mobileMenuOpen)
-              },
-              mobileMenuOpen ? React.createElement(X, { size: 28 }) : React.createElement(Menu, { size: 28 })
-            )
-          ),
-          React.createElement(
-            AnimatePresence,
-            null,
-            mobileMenuOpen && React.createElement(
-              motion.div,
-              {
-                initial: { opacity: 0, height: 0 },
-                animate: { opacity: 1, height: "100vh" },
-                exit: { opacity: 0, height: 0 },
-                className: "fixed top-0 left-0 w-full bg-black z-40 flex flex-col items-center justify-center space-y-8 md:hidden overflow-hidden"
-              },
-              React.createElement(
-                "button",
-                {
-                  className: "absolute top-8 right-6 text-white hover:text-amber-400",
-                  onClick: () => setMobileMenuOpen(false)
-                },
-                React.createElement(X, { size: 32 })
-              ),
-              navLinks.map((link) =>
-                React.createElement(
-                  "button",
-                  {
-                    key: link.id,
-                    onClick: () => {
-                      scrollToSection(link.id);
-                      setMobileMenuOpen(false);
-                    },
-                    className: "text-2xl uppercase tracking-widest font-serif text-white hover:text-amber-400"
-                  },
-                  link.name
-                )
-              )
-            )
-          )
-        );
-      }
+    <div class="model-card">
+        <h3>Lamborghini Urus Regalia</h3>
+        <div class="model-gallery">
+            <img src="images/lamborghini-side.jpg" alt="Lamborghini côté après transformation">
+            <img src="images/lamborghini-front.jpg" alt="Lamborghini avant après transformation">
+            <img src="images/lamborghini-rear.jpg" alt="Lamborghini arrière après transformation">
+        </div>
+    </div>
 
-      // 2. Hero
-      function Hero() {
-        const slides = [
-          { id: 1, image: "https://i.postimg.cc/dVRR1mRh/image.png", title: "L'Art de la Domination", subtitle: "Lamborghini Venatus" },
-          { id: 2, image: "https://i.postimg.cc/h4HwJd3M/image.png", title: "Précision Allemande", subtitle: "BMW XM" },
-          { id: 3, image: "https://i.postimg.cc/6qk9DZys/image.png", title: "Passion Italienne", subtitle: "Ferrari 488 GTB" }
-        ];
-        const [currentSlide, setCurrentSlide] = useState(0);
+</section>
 
-        useEffect(() => {
-          const timer = setInterval(() => setCurrentSlide(prev => (prev + 1) % slides.length), 6000);
-          return () => clearInterval(timer);
-        }, []);
+<!-- MANSORY RIMS -->
+<section id="rims" class="rims">
+    <h2>Mansory Rims</h2>
+    <div class="rims-gallery">
+        <img src="images/rim1.jpg" alt="Jante dorée forgée">
+        <img src="images/rim2.jpg" alt="Jante carbone luxe">
+        <img src="images/rim3.jpg" alt="Jante sport premium">
+    </div>
+</section>
 
-        return React.createElement(
-          "section",
-          { id: "hero", className: "relative h-screen w-full overflow-hidden bg-black" },
-          React.createElement(
-            AnimatePresence,
-            { mode: "wait" },
-            React.createElement(
-              motion.div,
-              {
-                key: currentSlide,
-                initial: { opacity: 0, scale: 1.1 },
-                animate: { opacity: 1, scale: 1 },
-                exit: { opacity: 0 },
-                transition: { duration: 1.5, ease: "easeOut" },
-                className: "absolute inset-0 w-full h-full"
-              },
-              React.createElement("div", { className: "absolute inset-0 bg-gradient-to-t from-black via-transparent to-black/60 z-10" }),
-              React.createElement("div", { className: "absolute inset-0 bg-black/30 z-10" }),
-              React.createElement("img", { src: slides[currentSlide].image, alt: slides[currentSlide].title, className: "w-full h-full object-cover object-center" })
-            )
-          ),
-          React.createElement(
-            "div",
-            { className: "absolute inset-0 z-20 flex flex-col items-center justify-center text-center px-4" },
-            React.createElement(
-              motion.h2,
-              {
-                key: `sub-${currentSlide}`,
-                initial: { y: 20, opacity: 0 },
-                animate: { y: 0, opacity: 1 },
-                transition: { delay: 0.5, duration: 0.8 },
-                className: "text-amber-400 uppercase tracking-[0.4em] text-sm md:text-lg font-medium mb-4"
-              },
-              slides[currentSlide].subtitle
-            ),
-            React.createElement(
-              motion.h1,
-              {
-                key: `title-${currentSlide}`,
-                initial: { y: 30, opacity: 0 },
-                animate: { y: 0, opacity: 1 },
-                transition: { delay: 0.7, duration: 0.8 },
-                className: "text-5xl md:text-7xl lg:text-9xl font-serif font-bold text-white mb-8 drop-shadow-2xl"
-              },
-              slides[currentSlide].title
-            ),
-             React.createElement(
-              motion.button,
-              {
-                onClick: () => document.getElementById("brands").scrollIntoView({ behavior: 'smooth' }),
-                whileHover: { scale: 1.05 },
-                whileTap: { scale: 0.95 },
-                className: "mt-8 px-10 py-4 border border-amber-400 text-amber-400 uppercase tracking-widest hover:bg-amber-400 hover:text-black transition-all duration-300 flex items-center gap-2 text-sm font-bold"
-              },
-              "Découvrir la collection"
-            )
-          ),
-          // Scroll Indicator
-          React.createElement(
-            "div",
-            { className: "absolute bottom-10 left-1/2 transform -translate-x-1/2 z-30 animate-bounce text-white/50" },
-            React.createElement("div", { className: "w-px h-12 bg-gradient-to-b from-transparent via-amber-400 to-transparent" })
-          )
-        );
-      }
+<!-- FIND YOUR DREAM MODEL -->
+<section id="find" class="find-model">
+    <h2>Find Your Dream Model</h2>
+    <p>Choose options from below and find your customization</p>
 
-      // 3. Brands Section
-      function Brands({ onSelectBrand }) {
-        const brands = ["BMW", "FERRARI", "LAMBORGHINI"];
-        return React.createElement(
-          "section",
-          { id: "brands", className: "bg-black py-20 border-b border-white/5" },
-          React.createElement(
-            "div",
-            { className: "container mx-auto px-6" },
-            React.createElement("h3", { className: "text-center text-amber-400 uppercase tracking-[0.3em] text-xs mb-12 opacity-70" }, "Nos Spécialisations"),
-            React.createElement(
-              "div",
-              { className: "flex flex-col md:flex-row justify-center items-center gap-12 md:gap-24" },
-              brands.map(brand => 
-                React.createElement(
-                  motion.div,
-                  {
-                    key: brand,
-                    whileHover: { scale: 1.1, color: "#fbbf24" },
-                    onClick: () => {
-                      onSelectBrand(brand === "BMW" ? "BMW" : brand === "FERRARI" ? "Ferrari" : "Lamborghini");
-                      document.getElementById("models").scrollIntoView({ behavior: 'smooth' });
-                    },
-                    className: "text-3xl md:text-4xl font-serif text-zinc-700 cursor-pointer uppercase tracking-widest font-bold transition-all duration-500"
-                  },
-                  brand
-                )
-              )
-            )
-          )
-        );
-      }
+    <div class="filters">
+        <select id="brandSelect">
+            <option value="">Select Brand</option>
+            <option value="BMW">BMW</option>
+            <option value="Ferrari">Ferrari</option>
+            <option value="Lamborghini">Lamborghini</option>
+        </select>
 
-      // 4. Find Your Dream Model & Models Section
-      function Models({ selectedBrandFilter, setSelectedBrandFilter }) {
-        const [selectedModel, setSelectedModel] = useState("All");
-        const [selectedCar, setSelectedCar] = useState(null);
+        <select id="modelSelect">
+            <option value="">Select Model</option>
+        </select>
 
-        const brandsList = ["All", "BMW", "Ferrari", "Lamborghini"];
+        <button class="btn-gold" onclick="searchModel()">Search</button>
+    </div>
 
-        // Update local filter when parent filter changes
-        useEffect(() => {
-          if (selectedBrandFilter) setSelectedBrandFilter(selectedBrandFilter);
-        }, [selectedBrandFilter]);
+    <div id="searchResult"></div>
+</section>
 
-        const filteredCars = carDatabase.filter(car => {
-          const brandMatch = selectedBrandFilter === "All" || car.brand === selectedBrandFilter;
-          const modelMatch = selectedModel === "All" || car.model === selectedModel;
-          return brandMatch && modelMatch;
-        });
+<!-- NEWS & EVENTS -->
+<section id="news" class="news">
+    <h2>News & Events</h2>
+    <div class="news-grid">
+        <div class="news-card">
+            <h3>New BMW Transformation</h3>
+            <p>Widebody carbon kit & golden forged rims - January Edition.</p>
+        </div>
+        <div class="news-card">
+            <h3>Ferrari Custom Interior</h3>
+            <p>Diamond stitching leather & LED ambient upgrade.</p>
+        </div>
+        <div class="news-card">
+            <h3>Lamborghini Sport Package</h3>
+            <p>Full performance suspension & custom exhaust system.</p>
+        </div>
+    </div>
+</section>
 
-        return React.createElement(
-          "section",
-          { id: "models", className: "bg-zinc-950 py-24 min-h-screen relative" },
-           // Background decorative
-          React.createElement("div", { className: "absolute top-0 right-0 w-[500px] h-[500px] bg-amber-400/5 rounded-full blur-[100px] pointer-events-none" }),
-          
-          React.createElement(
-            "div",
-            { className: "container mx-auto px-6 relative z-10" },
-            
-            // "Find Your Dream Model" Section
-            React.createElement(
-              "div",
-              { className: "mb-20" },
-              React.createElement("h2", { className: "text-4xl md:text-5xl font-serif text-white text-center mb-16" }, "Find Your Dream Model"),
-              
-              React.createElement(
-                "div",
-                { className: "bg-zinc-900/80 backdrop-blur-md p-8 md:p-10 border border-white/5 shadow-2xl max-w-5xl mx-auto" },
-                React.createElement(
-                  "div",
-                  { className: "flex flex-col md:flex-row gap-6 items-end" },
-                  // Brand Select
-                  React.createElement(
-                    "div",
-                    { className: "w-full md:w-1/3" },
-                    React.createElement("label", { className: "block text-[10px] uppercase tracking-[0.2em] text-amber-400 mb-3 ml-1" }, "Marque"),
-                    React.createElement(
-                      "div",
-                      { className: "relative" },
-                      React.createElement(
-                        "select",
-                        {
-                          value: selectedBrandFilter,
-                          onChange: (e) => setSelectedBrandFilter(e.target.value),
-                          className: "w-full bg-black text-white border border-zinc-700 p-4 focus:border-amber-400 outline-none appearance-none cursor-pointer tracking-wider text-sm transition-colors"
-                        },
-                        brandsList.map(b => React.createElement("option", { key: b, value: b }, b))
-                      ),
-                      React.createElement(ChevronRight, { className: "absolute right-4 top-1/2 transform -translate-y-1/2 rotate-90 text-zinc-500 pointer-events-none", size: 16 })
-                    )
-                  ),
-                  // Model Select
-                  React.createElement(
-                    "div",
-                    { className: "w-full md:w-1/3" },
-                    React.createElement("label", { className: "block text-[10px] uppercase tracking-[0.2em] text-amber-400 mb-3 ml-1" }, "Modèle"),
-                    React.createElement(
-                       "div",
-                      { className: "relative" },
-                      React.createElement(
-                        "select",
-                        {
-                          value: selectedModel,
-                          onChange: (e) => setSelectedModel(e.target.value),
-                          className: "w-full bg-black text-white border border-zinc-700 p-4 focus:border-amber-400 outline-none appearance-none cursor-pointer tracking-wider text-sm transition-colors"
-                        },
-                        React.createElement("option", { value: "All" }, "All Models"),
-                        carDatabase.filter(c => selectedBrandFilter === "All" || c.brand === selectedBrandFilter).map(c =>
-                          React.createElement("option", { key: c.id, value: c.model }, c.model)
-                        )
-                      ),
-                      React.createElement(ChevronRight, { className: "absolute right-4 top-1/2 transform -translate-y-1/2 rotate-90 text-zinc-500 pointer-events-none", size: 16 })
-                    )
-                  ),
-                  // Search Button
-                  React.createElement(
-                    "div",
-                    { className: "w-full md:w-1/3" },
-                    React.createElement(
-                      "button",
-                      { className: "w-full bg-amber-400 text-black uppercase tracking-[0.2em] font-bold py-4 hover:bg-white transition-colors flex items-center justify-center gap-3 text-sm" },
-                      "Rechercher",
-                      React.createElement(Search, { size: 18 })
-                    )
-                  )
-                )
-              )
-            ),
+<!-- ABOUT SECTION -->
+<section id="about" class="about">
+    <h2>L’Excellence par Passion</h2>
+    <p>
+        Regalia est née d'une passion inébranlable pour l'automobile d'exception. Inspirés par les maîtres de la transformation comme Mansory et Brabus, nous nous spécialisons exclusivement dans la transformation de BMW, Ferrari et Lamborghini.
+        Notre philosophie repose sur l'excellence totale : widebody kits en carbone, intérieurs en cuir sur-mesure avec surpiqûres diamant, jantes forgées dorées, suspensions sport et éclairages LED personnalisés.
+        Nous sculptons des chefs-d'œuvre automobiles qui transcendent les limites du luxe et de la performance.
+    </p>
+</section>
 
-            // "Models" Grid
-            React.createElement(
-              "div",
-              { className: "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10" },
-              filteredCars.map((car, index) =>
-                React.createElement(
-                  motion.div,
-                  {
-                    key: car.id,
-                    initial: { opacity: 0, y: 30 },
-                    whileInView: { opacity: 1, y: 0 },
-                    viewport: { once: true },
-                    transition: { delay: index * 0.1 },
-                    className: "group relative cursor-pointer",
-                    onClick: () => setSelectedCar(car)
-                  },
-                  React.createElement(
-                    "div",
-                    { className: "aspect-[4/3] overflow-hidden bg-zinc-900 border border-white/5 group-hover:border-amber-400/50 transition-all duration-500 relative" },
-                    React.createElement("div", { className: "absolute top-4 right-4 z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" },
-                      React.createElement("span", { className: "text-amber-400 font-serif font-bold tracking-widest text-[10px] border border-amber-400 px-3 py-1" }, "REGALIA")
-                    ),
-                    React.createElement("img", {
-                      src: car.images.side,
-                      alt: car.model,
-                      className: "w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-1000"
-                    }),
-                    React.createElement("div", { className: "absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-90" }),
-                    React.createElement(
-                      "div",
-                      { className: "absolute bottom-0 left-0 w-full p-8 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500" },
-                      React.createElement("h4", { className: "text-amber-400 text-[10px] tracking-[0.3em] uppercase mb-2" }, car.brand),
-                      React.createElement("h3", { className: "text-xl font-serif text-white group-hover:text-amber-400 transition-colors" }, car.model)
-                    )
-                  )
-                )
-              )
-            )
-          ),
+<!-- CONTACT -->
+<section id="contact" class="contact">
+    <h2>Contact Us</h2>
+    <form>
+        <input type="text" placeholder="Full Name" required>
+        <input type="email" placeholder="Email Address" required>
+        <textarea placeholder="Your Message"></textarea>
+        <button type="submit" class="btn-gold">Send Message</button>
+    </form>
+</section>
 
-          // Car Detail Modal
-          React.createElement(
-            AnimatePresence,
-            null,
-            selectedCar && React.createElement(
-              motion.div,
-              {
-                initial: { opacity: 0 },
-                animate: { opacity: 1 },
-                exit: { opacity: 0 },
-                className: "fixed inset-0 z-[60] flex items-center justify-center bg-black/98 p-4 md:p-10"
-              },
-              React.createElement(
-                "button",
-                {
-                  onClick: () => setSelectedCar(null),
-                  className: "absolute top-6 right-6 md:top-10 md:right-10 text-zinc-500 hover:text-amber-400 transition-colors z-50"
-                },
-                React.createElement(X, { size: 40 })
-              ),
-              React.createElement(
-                "div",
-                { className: "w-full max-w-7xl h-full overflow-y-auto no-scrollbar flex flex-col items-center pt-10" },
-                React.createElement(
-                  motion.div,
-                  {
-                    initial: { y: 20, opacity: 0 },
-                    animate: { y: 0, opacity: 1 },
-                    className: "text-center mb-16"
-                  },
-                  React.createElement("h2", { className: "text-4xl md:text-7xl font-serif text-white mb-4" }, selectedCar.model),
-                  React.createElement("div", { className: "w-20 h-1 bg-amber-400 mx-auto mb-4" }),
-                  React.createElement("p", { className: "text-amber-400 uppercase tracking-[0.3em] text-sm" }, selectedCar.specs)
-                ),
-                React.createElement(
-                  "div",
-                  { className: "grid grid-cols-1 md:grid-cols-3 gap-8 w-full mb-16" },
-                  ['side', 'front', 'back'].map((view, idx) =>
-                    React.createElement(
-                      motion.div,
-                      {
-                        key: view,
-                        initial: { opacity: 0, y: 30 },
-                        animate: { opacity: 1, y: 0 },
-                        transition: { delay: 0.2 + (idx * 0.1) },
-                        className: "relative aspect-square group overflow-hidden border border-zinc-800 bg-zinc-900"
-                      },
-                      React.createElement("img", { src: selectedCar.images[view], alt: view, className: "w-full h-full object-cover" }),
-                      React.createElement("div", { className: "absolute inset-0 bg-black/20 group-hover:bg-transparent transition-all duration-500" }),
-                       React.createElement("div", { className: "absolute top-4 right-4 z-20 opacity-80" },
-                          React.createElement("span", { className: "text-amber-400 font-bold font-serif text-2xl drop-shadow-lg" }, "R")
-                       ),
-                      React.createElement(
-                        "div",
-                        { className: "absolute bottom-6 left-6" },
-                        React.createElement("span", { className: "text-white text-[10px] uppercase tracking-[0.2em] bg-black/80 px-3 py-2 border-l-2 border-amber-400" },
-                          view === 'side' ? 'Vue Latérale' : view === 'front' ? 'Vue Avant' : 'Vue Arrière'
-                        )
-                      )
-                    )
-                  )
-                ),
-                React.createElement(
-                  motion.button,
-                  {
-                     initial: { opacity: 0 },
-                     animate: { opacity: 1 },
-                     transition: { delay: 0.6 },
-                     className: "bg-amber-400 text-black px-12 py-5 uppercase tracking-[0.2em] font-bold hover:bg-white transition-colors mb-10"
-                  },
-                  "Configurer ce modèle"
-                )
-              )
-            )
-          )
-        );
-      }
+<!-- FOOTER -->
+<footer class="footer">
+    <p>© 2026 Regalia. All Rights Reserved.</p>
+</footer>
 
-      // 5. Mansory Rims Section
-      function Rims() {
-        const [selectedRim, setSelectedRim] = useState(null);
+<!-- JS -->
+<script src="script.js"></script>
 
-        return React.createElement(
-          "section",
-          { id: "rims", className: "bg-black py-24 border-t border-zinc-900" },
-          React.createElement(
-            "div",
-            { className: "container mx-auto px-6" },
-            React.createElement(
-              "div",
-              { className: "text-center mb-20" },
-              React.createElement("h2", { className: "text-amber-400 uppercase tracking-[0.3em] text-sm font-medium mb-4" }, "Ingénierie de Précision"),
-              React.createElement("h1", { className: "text-5xl font-serif text-white" }, "Mansory Rims Collection"),
-            ),
-            React.createElement(
-              "div",
-              { className: "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10" },
-              rims.map(rim =>
-                React.createElement(
-                  motion.div,
-                  {
-                    key: rim.id,
-                    whileHover: { y: -10 },
-                    className: "group relative cursor-pointer",
-                    onClick: () => setSelectedRim(rim)
-                  },
-                  React.createElement(
-                    "div",
-                    { className: "aspect-square overflow-hidden bg-zinc-900/50 rounded-full border border-zinc-800 group-hover:border-amber-400/60 transition-all duration-500 p-8" },
-                    React.createElement("img", {
-                      src: rim.img,
-                      alt: rim.name,
-                      className: "w-full h-full object-contain transform group-hover:scale-110 group-hover:rotate-45 transition-all duration-700 drop-shadow-2xl"
-                    }),
-                    React.createElement(
-                      "div",
-                      { className: "absolute inset-0 bg-black/60 group-hover:bg-transparent transition-all duration-500 flex items-center justify-center rounded-full" },
-                      React.createElement(ZoomIn, { className: "text-amber-400 opacity-0 group-hover:opacity-100 transition-all duration-500 scale-50 group-hover:scale-100", size: 32 })
-                    )
-                  ),
-                  React.createElement("h3", { className: "text-center text-white mt-8 font-serif text-xl group-hover:text-amber-400 transition-colors" }, rim.name)
-                )
-              )
-            )
-          ),
-          // Rim Modal
-          React.createElement(
-            AnimatePresence,
-            null,
-            selectedRim && React.createElement(
-              motion.div,
-              {
-                initial: { opacity: 0 },
-                animate: { opacity: 1 },
-                exit: { opacity: 0 },
-                className: "fixed inset-0 z-50 flex items-center justify-center bg-black/95 backdrop-blur-md p-4",
-                onClick: () => setSelectedRim(null)
-              },
-              React.createElement(
-                "div",
-                { className: "relative max-w-3xl w-full bg-zinc-900 border border-zinc-800", onClick: (e) => e.stopPropagation() },
-                React.createElement("button", { onClick: () => setSelectedRim(null), className: "absolute top-4 right-4 text-white hover:text-amber-400" }, React.createElement(X, { size: 24 })),
-                React.createElement(
-                  "div",
-                  { className: "p-12 text-center" },
-                   React.createElement("img", { src: selectedRim.img, alt: selectedRim.name, className: "w-64 h-64 mx-auto object-contain mb-8 animate-[spin_10s_linear_infinite]" }),
-                  React.createElement("h2", { className: "text-3xl font-serif text-white mb-2" }, selectedRim.name),
-                  React.createElement("p", { className: "text-amber-400 uppercase tracking-widest text-xs mb-6" }, "Forged Monoblock"),
-                  React.createElement("p", { className: "text-gray-400 text-sm leading-relaxed" }, "Alliage ultra-léger pour une performance optimale. Disponible en finitions Black Diamond et Gold Dust."),
-                )
-              )
-            )
-          )
-        );
-      }
-
-      // 6. News & Events
-      function NewsEvents() {
-        return React.createElement(
-          "section",
-          { id: "news", className: "bg-zinc-950 py-24" },
-          React.createElement(
-            "div",
-            { className: "container mx-auto px-6" },
-            React.createElement("h2", { className: "text-4xl md:text-5xl font-serif text-white mb-16 border-l-4 border-amber-400 pl-6" }, "News & Events"),
-            React.createElement(
-              "div",
-              { className: "grid grid-cols-1 md:grid-cols-2 gap-12" },
-              news.map(item =>
-                React.createElement(
-                  "div",
-                  { key: item.id, className: "group cursor-pointer" },
-                  React.createElement(
-                    "div",
-                    { className: "overflow-hidden mb-8 relative border-b-2 border-transparent group-hover:border-amber-400 transition-colors" },
-                    React.createElement("img", {
-                      src: item.img,
-                      alt: item.title,
-                      className: "w-full aspect-[16/9] object-cover transform group-hover:scale-105 transition-transform duration-700 filter grayscale group-hover:grayscale-0"
-                    })
-                  ),
-                  React.createElement(
-                    "div",
-                    { className: "flex items-center gap-4 text-amber-400 text-[10px] tracking-[0.2em] uppercase mb-4" },
-                    React.createElement("span", null, item.date),
-                    React.createElement("div", { className: "h-px w-10 bg-amber-400" })
-                  ),
-                  React.createElement("h3", { className: "text-2xl font-serif text-white mb-4 group-hover:text-amber-400 transition-colors" }, item.title),
-                  React.createElement("p", { className: "text-gray-400 mb-6 leading-relaxed text-sm" }, item.excerpt),
-                  React.createElement(
-                    "button",
-                    { className: "text-white uppercase tracking-widest text-xs font-bold flex items-center gap-2 group-hover:gap-4 transition-all duration-300" },
-                    "Lire l'article", React.createElement(ArrowRight, { size: 14, className: "text-amber-400" })
-                  )
-                )
-              )
-            )
-          )
-        );
-      }
-
-      // 7. About (Philosophy)
-      function About() {
-        return React.createElement(
-          "section",
-          { id: "about", className: "bg-black py-32 relative overflow-hidden" },
-          React.createElement("div", { className: "absolute top-0 left-0 w-full h-full bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-10" }),
-          React.createElement("div", { className: "absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-amber-400/5 rounded-full blur-[120px]" }),
-          
-          React.createElement(
-            "div",
-            { className: "container mx-auto px-6 relative z-10 text-center" },
-            React.createElement("h2", { className: "text-amber-400 uppercase tracking-[0.3em] text-sm font-medium mb-8" }, "Notre Philosophie"),
-            React.createElement("h1", { className: "text-4xl md:text-6xl font-serif text-white mb-16" }, "L'Excellence par Passion"),
-            
-            React.createElement(
-              "div",
-              { className: "max-w-4xl mx-auto text-gray-300 text-lg md:text-xl leading-relaxed space-y-10 font-light" },
-              React.createElement("p", null, 
-                "Regalia est née d'une passion inébranlable pour l'automobile d'exception. Inspirés par les maîtres de la transformation comme Mansory et Brabus, nous nous spécialisons exclusivement dans la transformation de ",
-                React.createElement("span", { className: "text-white font-medium" }, "BMW, Ferrari et Lamborghini"),
-                ". Notre philosophie repose sur l'excellence totale : widebody kits en carbone, intérieurs en cuir sur-mesure avec surpiqûres diamant, jantes forgées dorées, suspensions sport, et éclairages LED personnalisés."
-              ),
-              React.createElement("p", null,
-                "Chaque détail est pensé pour créer des véhicules ultra-luxueux et uniques au monde. Nous ne créons pas simplement des véhicules modifiés. ",
-                React.createElement("span", { className: "text-amber-400 font-serif italic" }, "Nous sculptons des chefs-d'œuvre automobiles"),
-                " qui transcendent les limites du luxe et de la performance. Chaque création porte fièrement le logo Regalia illuminé, symbole d'une transformation parfaite."
-              )
-            ),
-            
-            React.createElement("div", { className: "w-24 h-px bg-gradient-to-r from-transparent via-amber-400 to-transparent mx-auto mt-20" })
-          )
-        );
-      }
-
-      // 8. Contact Us
-      function Contact() {
-        return React.createElement(
-          "section",
-          { id: "contact", className: "bg-zinc-950 py-24 relative" },
-          React.createElement("div", { className: "absolute right-0 top-0 w-1/3 h-full bg-gradient-to-l from-zinc-900 to-transparent pointer-events-none" }),
-          
-          React.createElement(
-            "div",
-            { className: "container mx-auto px-6 relative z-10" },
-            React.createElement(
-              "div",
-              { className: "flex flex-col lg:flex-row gap-20" },
-              
-              // Text Info
-              React.createElement(
-                "div",
-                { className: "lg:w-5/12" },
-                React.createElement("h2", { className: "text-amber-400 uppercase tracking-[0.3em] text-sm font-medium mb-4" }, "Contactez-nous"),
-                React.createElement("h1", { className: "text-5xl font-serif text-white mb-8" }, "Start Your Transformation"),
-                React.createElement("p", { className: "text-gray-400 mb-12 leading-relaxed" }, "Prêt à créer votre chef-d'œuvre ? Contactez nos experts pour une consultation privée et découvrez comment nous pouvons réaliser votre vision."),
-                
-                React.createElement(
-                  "div",
-                  { className: "space-y-10" },
-                  [
-                    { Icon: MapPin, title: "Showroom & Atelier", text: "Av. Hassan II, Rabat, Maroc" },
-                    { Icon: Phone, title: "Service Client", text: "+212 63 45 67 550" },
-                    { Icon: Mail, title: "Email", text: "contact@regalia-motors.com" }
-                  ].map((item, index) =>
-                    React.createElement(
-                      "div",
-                      { key: index, className: "flex items-center gap-6 group" },
-                      React.createElement(
-                        "div",
-                        { className: "p-4 border border-zinc-800 rounded-full text-zinc-400 group-hover:text-amber-400 group-hover:border-amber-400 transition-all duration-300" },
-                        React.createElement(item.Icon, { size: 20 })
-                      ),
-                      React.createElement(
-                        "div",
-                        null,
-                        React.createElement("h3", { className: "text-white font-serif text-lg group-hover:text-amber-400 transition-colors" }, item.title),
-                        React.createElement("p", { className: "text-gray-500 text-sm" }, item.text)
-                      )
-                    )
-                  )
-                )
-              ),
-
-              // Form
-              React.createElement(
-                "div",
-                { className: "lg:w-7/12" },
-                React.createElement(
-                  "form",
-                  { className: "bg-black p-8 md:p-12 border border-zinc-800 shadow-2xl" },
-                  React.createElement(
-                    "div",
-                    { className: "grid grid-cols-1 md:grid-cols-2 gap-8 mb-8" },
-                    React.createElement(
-                      "div",
-                      { className: "space-y-2" },
-                      React.createElement("label", { className: "text-[10px] uppercase tracking-widest text-gray-500" }, "Nom"),
-                      React.createElement("input", { type: "text", className: "w-full bg-zinc-900 border-b border-zinc-700 p-4 text-white focus:border-amber-400 outline-none transition-colors placeholder-zinc-700", placeholder: "Votre nom" })
-                    ),
-                    React.createElement(
-                      "div",
-                      { className: "space-y-2" },
-                      React.createElement("label", { className: "text-[10px] uppercase tracking-widest text-gray-500" }, "Email"),
-                      React.createElement("input", { type: "email", className: "w-full bg-zinc-900 border-b border-zinc-700 p-4 text-white focus:border-amber-400 outline-none transition-colors placeholder-zinc-700", placeholder: "votre@email.com" })
-                    )
-                  ),
-                  React.createElement(
-                    "div",
-                    { className: "space-y-2 mb-10" },
-                    React.createElement("label", { className: "text-[10px] uppercase tracking-widest text-gray-500" }, "Message"),
-                    React.createElement("textarea", { rows: 6, className: "w-full bg-zinc-900 border-b border-zinc-700 p-4 text-white focus:border-amber-400 outline-none transition-colors placeholder-zinc-700 resize-none", placeholder: "Parlez-nous de votre projet..." })
-                  ),
-                  React.createElement(
-                    "button",
-                    { type: "submit", className: "w-full bg-amber-400 text-black px-12 py-4 uppercase tracking-[0.2em] font-bold hover:bg-white transition-colors" },
-                    "Envoyer la demande"
-                  )
-                )
-              )
-            )
-          )
-        );
-      }
-
-      // 9. Footer
-      function Footer() {
-        return React.createElement(
-          "footer",
-          { className: "bg-black border-t border-zinc-900 pt-20 pb-10" },
-          React.createElement(
-            "div",
-            { className: "container mx-auto px-6" },
-            React.createElement(
-              "div",
-              { className: "flex flex-col md:flex-row justify-between items-center mb-16 gap-8" },
-              React.createElement(
-                "div",
-                { className: "text-4xl font-serif font-bold tracking-widest text-white" },
-                React.createElement("span", { className: "text-amber-400" }, "R"), "EGALIA"
-              ),
-              React.createElement(
-                "div",
-                { className: "flex gap-8" },
-                [Instagram, Facebook, Youtube].map((Icon, i) => 
-                  React.createElement("a", { key: i, href: "#", className: "text-gray-400 hover:text-amber-400 transition-colors" }, React.createElement(Icon, { size: 24 }))
-                )
-              )
-            ),
-            React.createElement(
-              "div",
-              { className: "border-t border-zinc-900 pt-8 flex flex-col md:flex-row justify-between items-center text-[10px] text-gray-600 uppercase tracking-widest" },
-              React.createElement("p", null, "&copy; 2026 Regalia Automotive. All rights reserved."),
-              React.createElement(
-                "div",
-                { className: "flex gap-8 mt-4 md:mt-0" },
-                React.createElement("a", { href: "#", className: "hover:text-amber-400 transition-colors" }, "Privacy Policy"),
-                React.createElement("a", { href: "#", className: "hover:text-amber-400 transition-colors" }, "Terms of Service")
-              )
-            )
-          )
-        );
-      }
-
-      // --- Main App ---
-      function App() {
-        const [selectedBrandFilter, setSelectedBrandFilter] = useState("All");
-
-        const scrollToSection = (id) => {
-          const element = document.getElementById(id);
-          if (element) {
-            element.scrollIntoView({ behavior: 'smooth' });
-          }
-        };
-
-        return React.createElement(
-          "div",
-          { className: "bg-black min-h-screen text-white font-sans selection:bg-amber-400 selection:text-black" },
-          React.createElement(Navbar, { scrollToSection }),
-          React.createElement(Hero),
-          React.createElement(Brands, { onSelectBrand: setSelectedBrandFilter }),
-          React.createElement(Models, { selectedBrandFilter, setSelectedBrandFilter }),
-          React.createElement(Rims),
-          React.createElement(NewsEvents),
-          React.createElement(About),
-          React.createElement(Contact),
-          React.createElement(Footer)
-        );
-      }
-
-      const root = createRoot(document.getElementById("root"));
-      root.render(React.createElement(App));
-    </script>
-    
-    <!-- External Scripts (as requested) -->
-    <script src="script.js" defer></script>
-  </body>
+</body>
 </html>
